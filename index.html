@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .box {
+            height: 100vh;
+            width: 100vw;
+            background: rgb(98, 49, 110);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .heading {
+            background: rgba(224, 169, 238, 0.1);
+            width: 90%;
+            max-width: 400px;
+            height: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .heading h1 {
+            color: rgba(210, 190, 190, 0.8);
+            letter-spacing: 2px;
+            font-size: 1.2rem;
+        }
+
+        .main {
+            width: 90%;
+            max-width: 400px;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background: rgba(227, 176, 238, 0.1);
+            border-radius: 4px;
+            gap: 1rem;
+        }
+
+        .range {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(189, 134, 203, 0.5);
+            height: 2rem;
+            width: 100%;
+            max-width: 300px;
+            border-radius: 5px;
+            padding: 5px;
+        }
+
+        .range p {
+            color: rgb(63, 49, 49);
+            font-size: 0.9rem;
+        }
+
+        .error-msg {
+            visibility: hidden;
+            text-align: center;
+        }
+
+        .error-msg p {
+            color: rgb(212, 202, 195);
+            font-size: 1rem;
+            letter-spacing: 1.1px;
+            font-weight: 600;
+        }
+
+        .text-btn {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        .text-btn input {
+            outline: none;
+            height: 2.5rem;
+            width: 100%;
+            padding: 10px;
+            border: 1px solid white;
+            background: rgb(85, 54, 92);
+            color: white;
+            font-size: 1rem;
+            border-radius: 5px;
+        }
+
+        .text-btn input::placeholder {
+            color: white;
+            opacity: 0.7;
+        }
+
+        .text-btn button {
+            outline: none;
+            height: 2.5rem;
+            width: 100%;
+            color: white;
+            background: rgba(74, 47, 80, 0.7);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            border-radius: 5px;
+        }
+
+        .text-btn button:hover {
+            background: rgba(74, 47, 80, 1);
+            transition: 0.3s ease;
+        }
+
+        /* Responsive design adjustments */
+        @media (max-width: 480px) {
+            .heading h1 {
+                font-size: 1.2rem;
+            }
+
+            .text-btn input {
+                font-size: 0.9rem;
+            }
+
+            .text-btn button {
+                font-size: 0.9rem;
+            }
+
+            .range {
+                flex-direction: column;
+                gap: 5px;
+                height: auto;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="heading">
+            <h1>Random Password Generator</h1>
+        </div>
+        <div class="main">
+            <div class="text-btn">
+                <input id="input" type="text" readonly placeholder="Generated password">
+                <button id="btn">Generate</button>
+            </div>
+            <div class="range">
+                <input type="range" name="" id="range" value="0">
+                <p>Length: <span id="length">0</span></p>
+            </div>
+            <div class="error-msg" id="error-msg">
+                <p id="msg">msg</p>
+            </div>
+        </div>
+    </div>
+</body>
+    <script src="index.js"></script>
+</html>
