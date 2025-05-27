@@ -82,10 +82,9 @@ The Password Generator is designed with a **mobile-first** approach and works se
 
 ## 💻 How to Use
 
-bash
+```bash
 git clone https://github.com/rajaroy47/random-passgen.git
 cd random-passgen
-```
 
 ---
 
@@ -97,4 +96,3 @@ Contributions are welcome! If you’d like to improve this project:
 2. **Create a branch**:
    bash
    git checkout -b feature/your-feature-name
-   ```
