@@ -1,0 +1,303 @@
+:root {
+  /* New Color Palette */
+  --primary-bg: #1a202c; /* Dark charcoal */
+  --secondary-bg: #2d3748; /* Slightly lighter dark */
+  --card-bg: #2d3748; /* Same as secondary */
+  --input-bg: #4a5568; /* Darker input */
+  --text-light: #e2e8f0; /* Light gray text */
+  --text-muted: #cbd5e0; /* Muted text */
+  --accent-primary: #20c997; /* Teal/Turquoise */
+  --accent-secondary: #4fd1c5; /* Lighter Teal */
+  --password-color: #66f1c7; /* Even lighter teal for password display */
+  --border-color: #667180; /* Input border */
+  --shadow-dark: rgba(0, 0, 0, 0.4);
+  --shadow-accent: rgba(32, 201, 151, 0.3); /* Shadow for accent color */
+  --shadow-accent-hover: rgba(32, 201, 151, 0.4);
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: var(--primary-bg);
+  color: var(--text-light);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  overflow-x: hidden;
+}
+
+.card {
+  background-color: var(--card-bg);
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px var(--shadow-dark);
+  padding: 30px;
+  width: 100%; /* Default to full width */
+  max-width: none; /* Remove max-width on larger screens */
+  border: none;
+  transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+h1 {
+  color: var(--text-light);
+  font-weight: 700;
+  margin-bottom: 30px;
+  text-align: center;
+  font-size: 2.5rem;
+  position: relative;
+}
+
+h1::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -10px;
+  transform: translateX(-50%);
+  width: 70px;
+  height: 3px;
+  background-color: var(--accent-primary);
+  border-radius: 2px;
+}
+
+.form-label {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.form-control,
+.form-check-input {
+  background-color: var(--input-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-light);
+  border-radius: 0.5rem;
+}
+
+.form-control:focus {
+  background-color: var(--input-bg);
+  color: var(--text-light);
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 0.25rem var(--shadow-accent);
+}
+
+/* Checkbox checked state - reverted to accent-primary */
+.form-check-input:checked {
+  background-color: var(--accent-primary); /* Teal/Turquoise color */
+  border-color: var(--accent-primary); /* Teal/Turquoise border */
+}
+
+.form-check-input:focus {
+  box-shadow: 0 0 0 0.25rem var(--shadow-accent);
+}
+
+/* Checkbox label color - ensures it's whiteish */
+.form-check-label {
+  color: var(--text-muted); /* This is already #cbd5e0 (whiteish) */
+}
+
+.btn-primary {
+  background-color: var(--accent-primary);
+  border-color: var(--accent-primary);
+  border-radius: 0.75rem;
+  padding: 12px 25px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px var(--shadow-accent);
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-secondary);
+  border-color: var(--accent-secondary);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px var(--shadow-accent-hover);
+}
+
+.btn-secondary {
+  background-color: var(
+    --input-bg
+  ); /* Use input background for secondary button */
+  border-color: var(--border-color);
+  border-radius: 0.75rem;
+  padding: 12px 25px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.btn-secondary:hover {
+  background-color: #374151; /* Slightly darker on hover */
+  border-color: #374151;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+#generatedPassword {
+  background-color: var(--primary-bg);
+  color: var(--password-color); /* New color for password display */
+  font-size: 1.4rem;
+  font-weight: bold;
+  padding: 15px;
+  border-radius: 0.75rem;
+  text-align: center;
+  word-wrap: break-word;
+  margin-top: 20px;
+  border: 1px solid var(--border-color);
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
+  /* Flexbox for layout of password and copy button */
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Space out text and button */
+}
+
+#passwordDisplay {
+  flex-grow: 1; /* Allow password text to take available space */
+  text-align: left; /* Align text to the left within its flex item */
+  margin-right: 10px; /* Space between text and button */
+  word-break: break-all; /* Ensure long words break */
+}
+
+/* Password Strength Indicator */
+#passwordStrengthBar {
+  height: 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+  background-color: var(--input-bg); /* Base color */
+  transition: width 0.5s ease-in-out, background-color 0.5s ease-in-out;
+}
+
+.strength-text {
+  text-align: center;
+  font-weight: 600;
+  margin-top: 5px;
+  transition: color 0.5s ease-in-out;
+}
+
+/* Strength colors - kept as standard for clear meaning */
+.strength-weak {
+  background-color: #dc3545;
+} /* Red */
+.strength-medium {
+  background-color: #ffc107;
+} /* Yellow */
+.strength-strong {
+  background-color: #28a745;
+} /* Green */
+.text-weak {
+  color: #dc3545;
+}
+.text-medium {
+  color: #ffc107;
+}
+.text-strong {
+  color: #28a745;
+}
+
+/* History Section */
+#passwordHistory {
+  background-color: var(--card-bg);
+  border-radius: 1rem;
+  padding: 20px;
+  margin-top: 30px;
+  box-shadow: 0 5px 15px var(--shadow-dark);
+}
+
+#passwordHistory h4 {
+  color: var(--text-light);
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+#historyList {
+  list-style: none;
+  padding: 0;
+  max-height: 200px;
+  overflow-y: auto;
+  border-radius: 0.5rem;
+  background-color: var(--primary-bg);
+  border: 1px solid var(--border-color);
+}
+
+#historyList li {
+  padding: 10px 15px;
+  border-bottom: 1px solid #374151;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+#historyList li:last-child {
+  border-bottom: none;
+}
+
+#historyList li .copy-history-btn {
+  background: none;
+  border: none;
+  color: var(--accent-primary);
+  cursor: pointer;
+  font-size: 1rem;
+  transition: color 0.2s ease;
+}
+
+#historyList li .copy-history-btn:hover {
+  color: var(--accent-secondary);
+}
+
+/* Custom Message Box (instead of alert) */
+.message-box {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #28a745; /* Green for success */
+  color: white;
+  padding: 15px 20px;
+  border-radius: 0.5rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  z-index: 1050;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.message-box.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.message-box.error {
+  background-color: #dc3545; /* Red for error */
+}
+
+/* Desktop Specific Styles */
+@media (min-width: 768px) {
+  /* Adjust breakpoint as needed */
+  .card {
+    max-width: 90%; /* Or any percentage you prefer for desktop */
+  }
+}
+
+/* Responsive Adjustments for smaller screens (mobile) */
+@media (max-width: 576px) {
+  .card {
+    padding: 20px;
+  }
+  h1 {
+    font-size: 2rem;
+  }
+  #generatedPassword {
+    font-size: 1.2rem;
+    padding: 12px;
+  }
+  .btn-primary,
+  .btn-secondary {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+  .form-check-label {
+    font-size: 0.9rem;
+  }
+}
