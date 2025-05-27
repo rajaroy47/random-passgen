@@ -80,11 +80,21 @@ The Password Generator is designed with a **mobile-first** approach and works se
 
 ---
 
+## 💻 How to Use
+
+bash
+git clone https://github.com/rajaroy47/random-passgen.git
+cd random-passgen
+```
+
+---
+
 ## 🤝 Contributing
 
 Contributions are welcome! If you’d like to improve this project:
 
 1. **Fork** the repository.
 2. **Create a branch**:
-   ```bash
+   bash
    git checkout -b feature/your-feature-name
+   ```
